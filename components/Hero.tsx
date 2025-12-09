@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
 
+import ThreeBackground from './ThreeBackground';
+
 interface HeroProps {
   onNavigate?: (page: string, section?: string) => void;
 }
@@ -16,7 +18,10 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
 
   return (
     <section id="home" className="min-h-screen flex flex-col justify-center relative bg-stone-50 dark:bg-stone-950 transition-colors duration-300 overflow-hidden pt-20">
-      
+
+      {/* 3D Background */}
+      <ThreeBackground />
+
       {/* Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-[-10%] right-[-5%] w-[600px] h-[600px] bg-indigo-100/40 dark:bg-indigo-900/10 rounded-full blur-[80px] opacity-60" />
@@ -25,9 +30,9 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10 w-full">
         <div className="flex flex-col items-center text-center">
-          
+
           {/* Intro Badge */}
-          <motion.div 
+          <motion.div
             {...({
               initial: { opacity: 0, y: 20 },
               animate: { opacity: 1, y: 0 },
@@ -42,7 +47,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           </motion.div>
 
           {/* Main Title */}
-          <motion.h1 
+          <motion.h1
             {...({
               initial: { opacity: 0, y: 20 },
               animate: { opacity: 1, y: 0 },
@@ -54,7 +59,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           </motion.h1>
 
           {/* Subtitle / Role */}
-          <motion.p 
+          <motion.p
             {...({
               initial: { opacity: 0, y: 20 },
               animate: { opacity: 1, y: 0 },
@@ -66,7 +71,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
           </motion.p>
 
           {/* Buttons & Socials */}
-          <motion.div 
+          <motion.div
             {...({
               initial: { opacity: 0, y: 20 },
               animate: { opacity: 1, y: 0 },
@@ -74,26 +79,26 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             } as any)}
             className="flex flex-col md:flex-row items-center gap-6"
           >
-            <button 
+            <button
               onClick={handleViewWork}
               className="px-8 py-4 bg-stone-900 dark:bg-stone-100 text-white dark:text-stone-900 rounded-full font-bold text-lg hover:scale-105 hover:shadow-lg transition-all duration-300 flex items-center gap-2 group"
             >
               Explore Portfolio
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </button>
-            
+
             <div className="flex items-center gap-4 px-6 py-4 rounded-full bg-white/50 dark:bg-stone-900/50 backdrop-blur-sm border border-stone-200 dark:border-stone-800">
-               <a href="https://github.com/Yashwant00CR7" target="_blank" rel="noopener noreferrer" className="text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors p-1">
-                 <Github size={22} />
-               </a>
-               <div className="w-px h-5 bg-stone-300 dark:bg-stone-700" />
-               <a href="https://www.linkedin.com/in/yashwant-k-935aa0292/" target="_blank" rel="noopener noreferrer" className="text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors p-1">
-                 <Linkedin size={22} />
-               </a>
-               <div className="w-px h-5 bg-stone-300 dark:bg-stone-700" />
-               <a href="mailto:yashwantk0305@gmail.com" className="text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors p-1">
-                 <Mail size={22} />
-               </a>
+              <a href="https://github.com/Yashwant00CR7" target="_blank" rel="noopener noreferrer" className="text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors p-1">
+                <Github size={22} />
+              </a>
+              <div className="w-px h-5 bg-stone-300 dark:bg-stone-700" />
+              <a href="https://www.linkedin.com/in/yashwant-k-935aa0292/" target="_blank" rel="noopener noreferrer" className="text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors p-1">
+                <Linkedin size={22} />
+              </a>
+              <div className="w-px h-5 bg-stone-300 dark:bg-stone-700" />
+              <a href="mailto:yashwantk0305@gmail.com" className="text-stone-500 hover:text-stone-900 dark:hover:text-stone-100 transition-colors p-1">
+                <Mail size={22} />
+              </a>
             </div>
           </motion.div>
 
@@ -101,7 +106,7 @@ const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
       </div>
 
       {/* Scroll Down Indicator */}
-      <motion.div 
+      <motion.div
         {...({
           initial: { opacity: 0 },
           animate: { opacity: 1, y: [0, 10, 0] },
