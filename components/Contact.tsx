@@ -1,8 +1,35 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Mail, Phone, MapPin, Github, Linkedin } from 'lucide-react';
+import { Send, Mail, Phone, MapPin, Github, Linkedin, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
+import emailjs from '@emailjs/browser';
 
 const Contact: React.FC = () => {
+  const form = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+
+  const sendEmail = (e: React.FormEvent) => {
+    e.preventDefault();
+
+    // NOTE: Replace these with your actual EmailJS Service ID, Template ID, and Public Key
+    // You can get them by signing up at https://www.emailjs.com/
+    const ALL_KEYS_SET = true;
+
+    // Example: emailjs.sendForm('service_xyz', 'template_abc', form.current, 'public_key_123')
+    if (form.current) {
+      setStatus('sending');
+      emailjs.sendForm('service_8tiwcql', 'template_9uwjk6j', form.current, 'PwjubyV-moUP-E7h_')
+        .then(() => {
+          setStatus('success');
+          form.current?.reset();
+          setTimeout(() => setStatus('idle'), 5000);
+        }, (error) => {
+          console.error(error);
+          setStatus('error');
+          setTimeout(() => setStatus('idle'), 5000);
+        });
+    }
+  };
+
   return (
     <section id="contact" className="py-24 px-6 bg-gradient-to-br from-stone-900 via-slate-900 to-indigo-950 text-stone-50 relative overflow-hidden">
       {/* Background ambient light */}
@@ -29,94 +56,124 @@ const Contact: React.FC = () => {
           </p>
 
           <div className="flex flex-col md:flex-row flex-wrap justify-center gap-6 md:gap-12 mb-12">
-             <a href="mailto:yashwantk0305@gmail.com" className="flex items-center justify-center gap-2 text-stone-300 hover:text-cyan-300 transition-colors">
-                <Mail size={18} />
-                <span>yashwantk0305@gmail.com</span>
-             </a>
-             <div className="flex items-center justify-center gap-2 text-stone-300 hover:text-purple-300 transition-colors">
-                <Phone size={18} />
-                <span>+91 9342877060</span>
-             </div>
-             <div className="flex items-center justify-center gap-2 text-stone-300 hover:text-emerald-300 transition-colors">
-                <MapPin size={18} />
-                <span>Coimbatore, India</span>
-             </div>
+            <a href="mailto:yashwantk0305@gmail.com" className="flex items-center justify-center gap-2 text-stone-300 hover:text-cyan-300 transition-colors">
+              <Mail size={18} />
+              <span>yashwantk0305@gmail.com</span>
+            </a>
+            <div className="flex items-center justify-center gap-2 text-stone-300 hover:text-purple-300 transition-colors">
+              <Phone size={18} />
+              <span>+91 9342877060</span>
+            </div>
+            <div className="flex items-center justify-center gap-2 text-stone-300 hover:text-emerald-300 transition-colors">
+              <MapPin size={18} />
+              <span>Coimbatore, India</span>
+            </div>
           </div>
-          
+
           <div className="flex justify-center gap-6 mb-12">
-             <a href="https://github.com/Yashwant00CR7" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 rounded-full text-stone-300 hover:bg-white/20 hover:text-white hover:scale-110 transition-all backdrop-blur-sm border border-white/5">
-                <Github size={24} />
-             </a>
-             <a href="https://www.linkedin.com/in/yashwant-k-935aa0292/" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 rounded-full text-stone-300 hover:bg-white/20 hover:text-white hover:scale-110 transition-all backdrop-blur-sm border border-white/5">
-                <Linkedin size={24} />
-             </a>
+            <a href="https://github.com/Yashwant00CR7" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 rounded-full text-stone-300 hover:bg-white/20 hover:text-white hover:scale-110 transition-all backdrop-blur-sm border border-white/5">
+              <Github size={24} />
+            </a>
+            <a href="https://www.linkedin.com/in/yashwant-k-935aa0292/" target="_blank" rel="noopener noreferrer" className="p-3 bg-white/10 rounded-full text-stone-300 hover:bg-white/20 hover:text-white hover:scale-110 transition-all backdrop-blur-sm border border-white/5">
+              <Linkedin size={24} />
+            </a>
           </div>
         </motion.div>
 
         <motion.form
+          ref={form}
+          onSubmit={sendEmail}
           {...({
             initial: { opacity: 0, scale: 0.95 },
             whileInView: { opacity: 1, scale: 1 },
             viewport: { once: true }
           } as any)}
           className="bg-white/5 p-8 md:p-12 rounded-2xl shadow-deep backdrop-blur-md border border-white/10 max-w-2xl mx-auto relative overflow-hidden"
-          onSubmit={(e) => e.preventDefault()}
         >
           {/* Form subtle gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent pointer-events-none" />
 
           <div className="space-y-6 relative z-10">
             <div className="relative group">
-              <input 
-                type="text" 
-                id="name" 
+              <input
+                type="text"
+                name="user_name"
+                id="name"
+                required
                 placeholder=" "
-                className="block w-full px-4 py-4 text-stone-100 bg-stone-900/50 border border-stone-700 rounded-lg focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 peer transition-all group-hover:bg-stone-900/70"
+                className="block w-full px-4 pt-6 pb-2 text-stone-100 bg-stone-900/50 border border-stone-700 rounded-lg focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 peer transition-all group-hover:bg-stone-900/70"
               />
-              <label 
-                htmlFor="name" 
-                className="absolute text-stone-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-transparent px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-3 pointer-events-none peer-focus:text-cyan-400"
+              <label
+                htmlFor="name"
+                className="absolute text-stone-500 duration-300 transform scale-75 top-2 z-10 origin-[0] bg-transparent px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:top-4 peer-focus:top-2 peer-focus:scale-75 peer-focus:text-cyan-400 left-3 pointer-events-none"
               >
                 Your Name
               </label>
             </div>
 
             <div className="relative group">
-              <input 
-                type="email" 
-                id="email" 
+              <input
+                type="email"
+                name="user_email"
+                id="email"
+                required
                 placeholder=" "
-                className="block w-full px-4 py-4 text-stone-100 bg-stone-900/50 border border-stone-700 rounded-lg focus:outline-none focus:border-purple-400 focus:ring-1 focus:ring-purple-400 peer transition-all group-hover:bg-stone-900/70"
+                className="block w-full px-4 pt-6 pb-2 text-stone-100 bg-stone-900/50 border border-stone-700 rounded-lg focus:outline-none focus:border-purple-400 focus:ring-1 focus:ring-purple-400 peer transition-all group-hover:bg-stone-900/70"
               />
-              <label 
-                htmlFor="email" 
-                className="absolute text-stone-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-transparent px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-3 pointer-events-none peer-focus:text-purple-400"
+              <label
+                htmlFor="email"
+                className="absolute text-stone-500 duration-300 transform scale-75 top-2 z-10 origin-[0] bg-transparent px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:top-4 peer-focus:top-2 peer-focus:scale-75 peer-focus:text-purple-400 left-3 pointer-events-none"
               >
                 Email Address
               </label>
             </div>
 
             <div className="relative group">
-              <textarea 
-                id="message" 
+              <textarea
+                name="message"
+                id="message"
                 rows={4}
+                required
                 placeholder=" "
-                className="block w-full px-4 py-4 text-stone-100 bg-stone-900/50 border border-stone-700 rounded-lg focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 peer transition-all resize-none group-hover:bg-stone-900/70"
+                className="block w-full px-4 pt-6 pb-2 text-stone-100 bg-stone-900/50 border border-stone-700 rounded-lg focus:outline-none focus:border-emerald-400 focus:ring-1 focus:ring-emerald-400 peer transition-all resize-none group-hover:bg-stone-900/70"
               />
-              <label 
-                htmlFor="message" 
-                className="absolute text-stone-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-transparent px-2 peer-focus:px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-4 peer-placeholder-shown:top-6 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-3 pointer-events-none peer-focus:text-emerald-400"
+              <label
+                htmlFor="message"
+                className="absolute text-stone-500 duration-300 transform scale-75 top-2 z-10 origin-[0] bg-transparent px-2 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:top-4 peer-focus:top-2 peer-focus:scale-75 peer-focus:text-emerald-400 left-3 pointer-events-none"
               >
                 Message
               </label>
             </div>
 
-            <button 
+            <button
               type="submit"
-              className="w-full py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold rounded-lg hover:shadow-glow hover:shadow-purple-500/30 transition-all duration-300 flex items-center justify-center gap-2 cursor-scale transform hover:-translate-y-1"
+              disabled={status === 'sending' || status === 'success'}
+              className="w-full py-4 bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold rounded-lg hover:shadow-glow hover:shadow-purple-500/30 transition-all duration-300 flex items-center justify-center gap-2 cursor-scale transform hover:-translate-y-1 disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              Send Message
-              <Send size={18} />
+              {status === 'idle' && (
+                <>
+                  Send Message
+                  <Send size={18} />
+                </>
+              )}
+              {status === 'sending' && (
+                <>
+                  <Loader2 size={18} className="animate-spin" />
+                  Sending...
+                </>
+              )}
+              {status === 'success' && (
+                <>
+                  <CheckCircle size={18} />
+                  Message Sent!
+                </>
+              )}
+              {status === 'error' && (
+                <>
+                  <AlertCircle size={18} />
+                  Failed to Send
+                </>
+              )}
             </button>
           </div>
         </motion.form>
