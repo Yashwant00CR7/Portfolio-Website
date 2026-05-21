@@ -42,11 +42,12 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenCaseStudy }) => {
   return (
     <motion.section
       {...({
-        initial: { opacity: 0 },
+        initial: { opacity: 1 },
         animate: { opacity: 1 },
         exit: { opacity: 0 }
       } as any)}
       className="pb-32 px-6 min-h-screen bg-stone-50 dark:bg-stone-950 transition-colors duration-300 relative overflow-hidden"
+
     >
       {/* Ambient Background - Matches Hero/Skills */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-indigo-500/5 rounded-full blur-[120px] pointer-events-none" />
@@ -56,7 +57,7 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenCaseStudy }) => {
         {/* Header Section */}
         <motion.div
           {...({
-            initial: { opacity: 0, y: 30 },
+            initial: { opacity: 1, y: 0 },
             animate: { opacity: 1, y: 0 },
             transition: { duration: 0.6 }
           } as any)}
@@ -90,7 +91,7 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenCaseStudy }) => {
               <motion.div
                 key={index}
                 {...({
-                  initial: { opacity: 0, y: 40 },
+                  initial: { opacity: 1, y: 0 },
                   animate: { opacity: 1, y: 0 },
                   transition: { duration: 0.6, delay: index * 0.1 },
                   whileHover: { y: -10 }
@@ -285,7 +286,7 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenCaseStudy }) => {
                             {selectedProject.features.map((feature, idx) => (
                               <motion.div
                                 key={idx}
-                                initial={{ opacity: 0, y: 10 }}
+                                initial={{ opacity: 1, y: 0 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: idx * 0.1 }}
                                 className="flex items-start gap-4 p-5 rounded-2xl bg-stone-50 dark:bg-stone-900/40 border border-stone-100 dark:border-stone-800 hover:border-amber-200 dark:hover:border-amber-800/50 hover:bg-amber-50/50 dark:hover:bg-amber-900/10 transition-all duration-300 group"
@@ -313,7 +314,7 @@ const Projects: React.FC<ProjectsProps> = ({ onOpenCaseStudy }) => {
                             {selectedProject.gallery.map((img, idx) => (
                               <motion.div
                                 key={idx}
-                                initial={{ opacity: 0, scale: 0.98 }}
+                                initial={{ opacity: 1, scale: 1 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                                 className="group relative rounded-3xl overflow-hidden border border-stone-200 dark:border-stone-800 shadow-2xl bg-stone-900"

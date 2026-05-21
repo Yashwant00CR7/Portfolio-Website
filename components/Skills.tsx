@@ -73,7 +73,7 @@ const Skills: React.FC = () => {
       <div className="max-w-6xl mx-auto">
         <motion.div
            {...({
-             initial: { opacity: 0, y: 20 },
+             initial: { opacity: 1, y: 0 },
              animate: { opacity: 1, y: 0 },
              transition: { duration: 0.5 }
            } as any)}
@@ -99,7 +99,7 @@ const Skills: React.FC = () => {
                 initial: "hidden",
                 animate: "visible",
                 variants: {
-                  hidden: { opacity: 0, y: 20 },
+                  hidden: { opacity: 1, y: 0 },
                   visible: (i: number) => ({
                     opacity: 1,
                     y: 0,
@@ -135,15 +135,15 @@ const Skills: React.FC = () => {
                     key={skill}
                     {...({
                       variants: {
-                        hidden: { opacity: 0, scale: 0.8 },
-                        visible: { 
-                            opacity: 1, 
+                        hidden: { opacity: 1, scale: 1 },
+                        visible: {
+                            opacity: 1,
                             scale: 1,
                             transition: { type: "spring", stiffness: 300, damping: 20 }
                         }
                       },
-                      whileHover: { 
-                        scale: 1.05, 
+                      whileHover: {
+                        scale: 1.05,
                         y: -3,
                         transition: { duration: 0.2 }
                       }

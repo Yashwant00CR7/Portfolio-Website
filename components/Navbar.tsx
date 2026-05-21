@@ -68,7 +68,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage, theme, onToggl
             onClick={() => handleNavClick('home', 'home')}
             className="font-serif text-2xl font-bold tracking-tight z-50 relative cursor-scale group flex items-center"
           >
-            <span className="text-stone-900 dark:text-stone-100 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-cyan-600 transition-all duration-300">Yashwant</span>
+            <span className="text-stone-900 dark:text-stone-100 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-cyan-600 transition-all duration-300">Yashwant K.</span>
           </button>
 
           {/* Desktop Nav */}
