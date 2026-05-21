@@ -1,111 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, ExternalLink, Youtube, Play, X, Zap, Layers, Eye, ArrowUpRight, Check } from 'lucide-react';
+import { Github, ExternalLink, Youtube, Play, X, Zap, Layers, Eye, ArrowUpRight, Check, BookOpen } from 'lucide-react';
+import { projects, Project } from '../data/projects';
 
-interface Project {
-  title: string;
-  description: string;
-  longDescription: string;
-  features: string[];
-  tags: string[];
-  image: string;
-  gallery?: string[];
-  links: {
-    demo: string;
-    repo: string;
-  };
-}
-
-const projects: Project[] = [
-  {
-    title: "Package Conflict Agent",
-    description: "A multi-agent system designed to resolve dependency hell. Engineered 'Researcher' and 'CodeSurgeon' agents using Google ADK and Crawl4AI to automate requirements fixing.",
-    longDescription: "Dependency management in Python often leads to 'dependency hell', where conflicting version requirements break builds. This project introduces a multi-agent system to solve this autonomously. The 'Researcher' agent actively crawls the web using Crawl4AI to find compatible version combinations, while the 'CodeSurgeon' agent modifies requirements files automatically. The system utilizes Gemini 2.0 for reasoning and SQLite to maintain a graph of dependency relationships.",
-    features: [
-      "Multi-Agent Orchestration via Google ADK",
-      "Automated Dependency Resolution",
-      "Web Crawling for Compatibility Data",
-      "Graph-based Conflict Detection"
-    ],
-    tags: ["Python", "Google ADK", "Gemini 2.0", "SQLite", "Crawl4AI", "Multi-Agent Systems", "Graph Algorithms"],
-    image: "/projects/package_doctor1.jpg",
-    gallery: [
-      "/projects/package_doctor1.jpg"
-    ],
-    links: {
-      demo: "https://youtu.be/Hpi4CEw1DBs",
-      repo: "https://github.com/Yashwant00CR7/AI-Powered-Package-Conflict-Resolver"
-    }
-  },
-  {
-    title: "AI-Powered Auto Retail",
-    description: "Smart checkout solution achieving 90% mAP in product detection using YOLOv8. Features a mobile 'scan-and-bill' Flask API and AR navigation integration.",
-    longDescription: "Transforming the retail checkout experience, this computer vision system detects products in-time with high accuracy. By deploying YOLOv8 models optimized for edge inference, it allows shoppers to simply place items on a counter for instant billing. The accompanying mobile app provides AR navigation to help users find products in-store, creating a seamless 'Grab and Go' experience.",
-    features: [
-      "Real-time Object Detection (YOLOv8)",
-      "90% Mean Average Precision",
-      "AR Indoor Navigation",
-      "Instant Bill Generation API"
-    ],
-    tags: ["YOLOv8", "PyTorch", "Flask", "Flutter", "Computer Vision", "AR/VR", "Edge Computing"],
-    image: "/projects/auto-retail1.png",
-    gallery: [
-      "/projects/auto-retail1.png",
-      "/projects/auto-retail2.png",
-      "/projects/auto-retail3.png",
-      "/projects/auto-retail4.png"
-    ],
-    links: {
-      demo: "#",
-      repo: "https://github.com/Yashwant00CR7/Low-Budget-Automated-Stores"
-    }
-  },
-  {
-    title: "Hydroflow Assistant",
-    description: "Flutter-based expert system for monitoring hydraulic hose pressure. Implements intelligent leakage detection algorithms and real-time flow rate visualization.",
-    longDescription: "Designed for industrial safety and efficiency, Hydroflow Assistant monitors hydraulic systems in real-time. It connects with IoT sensors to track pressure and flow rates, using an expert system to predict potential hose failures before they occur. The Flutter dashboard provides intuitive visualizations for field technicians, historical analytics, and critical alerts.",
-    features: [
-      "Predictive Maintenance Algorithms",
-      "Real-time Sensor Data Visualization",
-      "Leakage Detection Alert System",
-      "Cross-platform Mobile App"
-    ],
-    tags: ["Flutter", "Dart", "Firebase", "Analytics", "IoT Integration", "Predictive Maintenance", "Expert Systems"],
-    image: "/projects/hydroflow2.jpg",
-    gallery: [
-      "/projects/hydroflow1.jpg",
-      "/projects/hydroflow2.jpg",
-      "/projects/hydrflow3.jpg"
-    ],
-    links: {
-      demo: "#",
-      repo: "https://github.com/Yashwant00CR7/hydroflow"
-    }
-  },
-  {
-    title: "Currency Detection App",
-    description: "Accessibility app for visually impaired users. Uses a two-stage YOLO + CNN pipeline to detect Indian currency and announces denominations via Text-to-Speech.",
-    longDescription: "Financial independence is crucial for everyone. This accessibility tool empowers visually impaired users to identify Indian currency notes instantly. It employs a two-stage pipeline: first detecting the note's presence, then classifying its denomination using a custom CNN, providing immediate audio feedback. The app is designed to work offline and in low-light conditions.",
-    features: [
-      "Two-stage Deep Learning Pipeline",
-      "Real-time Audio Feedback",
-      "Offline Functionality",
-      "High Accuracy in Low Light"
-    ],
-    tags: ["YOLO", "CNN", "Deep Learning", "Accessibility", "Text-to-Speech", "Android", "TensorFlow"],
-    image: "/projects/currency-detection1.png",
-    gallery: [
-      "/projects/currency-detection1.png",
-      "/projects/currency-detection2.png"
-    ],
-    links: {
-      demo: "https://youtu.be/xf-XroyE7PA",
-      repo: "https://github.com/Yashwant00CR7/CurrencyDetector"
-    }
-  }
-];
-
-const PLACEHOLDER_IMAGE = "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1600&auto=format&fit=crop";
+const PLACEHOLDER_IMAGE = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='600' viewBox='0 0 800 600'%3E%3Crect width='800' height='600' fill='%23f5f5f4'/%3E%3Ctext x='50%25' y='50%25' font-family='sans-serif' font-size='24' fill='%2378716c' text-anchor='middle' dy='.3em'%3EProject Image%3C/text%3E%3C/svg%3E";
 
 const getYouTubeId = (url: string) => {
   const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
@@ -113,7 +11,11 @@ const getYouTubeId = (url: string) => {
   return (match && match[2].length === 11) ? match[2] : null;
 };
 
-const Projects: React.FC = () => {
+interface ProjectsProps {
+  onOpenCaseStudy?: (project: Project) => void;
+}
+
+const Projects: React.FC<ProjectsProps> = ({ onOpenCaseStudy }) => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const videoRef = useRef<HTMLDivElement>(null);
   const [imgErrors, setImgErrors] = useState<Record<string, boolean>>({});
@@ -189,8 +91,7 @@ const Projects: React.FC = () => {
                 key={index}
                 {...({
                   initial: { opacity: 0, y: 40 },
-                  whileInView: { opacity: 1, y: 0 },
-                  viewport: { once: true },
+                  animate: { opacity: 1, y: 0 },
                   transition: { duration: 0.6, delay: index * 0.1 },
                   whileHover: { y: -10 }
                 } as any)}
@@ -385,8 +286,7 @@ const Projects: React.FC = () => {
                               <motion.div
                                 key={idx}
                                 initial={{ opacity: 0, y: 10 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
+                                animate={{ opacity: 1, y: 0 }}
                                 transition={{ delay: idx * 0.1 }}
                                 className="flex items-start gap-4 p-5 rounded-2xl bg-stone-50 dark:bg-stone-900/40 border border-stone-100 dark:border-stone-800 hover:border-amber-200 dark:hover:border-amber-800/50 hover:bg-amber-50/50 dark:hover:bg-amber-900/10 transition-all duration-300 group"
                               >
@@ -414,8 +314,7 @@ const Projects: React.FC = () => {
                               <motion.div
                                 key={idx}
                                 initial={{ opacity: 0, scale: 0.98 }}
-                                whileInView={{ opacity: 1, scale: 1 }}
-                                viewport={{ once: true }}
+                                animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.5, delay: idx * 0.1 }}
                                 className="group relative rounded-3xl overflow-hidden border border-stone-200 dark:border-stone-800 shadow-2xl bg-stone-900"
                               >
@@ -454,6 +353,20 @@ const Projects: React.FC = () => {
                           Links
                         </h3>
                         <div className="space-y-4">
+                          {/* CASE STUDY BUTTON - Integrated here for visibility in sidebar */}
+                          {selectedProject.caseStudy && onOpenCaseStudy && (
+                            <button
+                              onClick={() => {
+                                onOpenCaseStudy(selectedProject);
+                                setSelectedProject(null); // Close modal
+                              }}
+                              className="flex items-center justify-center gap-2 w-full py-4 bg-purple-600 text-white rounded-xl font-bold hover:bg-purple-700 hover:shadow-lg hover:scale-105 transition-all mb-4"
+                            >
+                              <BookOpen size={20} />
+                              Read Case Study
+                            </button>
+                          )}
+
                           <a
                             href={selectedProject.links.repo}
                             target="_blank"

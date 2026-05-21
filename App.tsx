@@ -9,9 +9,12 @@ import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import CustomCursor from './components/CustomCursor';
+import CaseStudy from './components/CaseStudy';
+import { Project } from './data/projects';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState('home');
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
       return localStorage.getItem('theme') || 'light';
@@ -34,7 +37,7 @@ export default function App() {
 
   const navigateTo = (page: string, sectionId?: string) => {
     setCurrentPage(page);
-    
+
     if (page === 'home' && sectionId) {
       setTimeout(() => {
         const element = document.getElementById(sectionId);
@@ -47,16 +50,22 @@ export default function App() {
     }
   };
 
+  const handleOpenCaseStudy = (project: Project) => {
+    setSelectedProject(project);
+    setCurrentPage('case-study');
+    window.scrollTo(0, 0);
+  };
+
   return (
     <main className="relative min-h-screen w-full overflow-x-hidden bg-stone-50 text-stone-900 dark:bg-stone-950 dark:text-stone-100 transition-colors duration-300">
       <CustomCursor />
-      <Navbar 
-        onNavigate={navigateTo} 
-        currentPage={currentPage} 
-        theme={theme} 
-        onToggleTheme={toggleTheme} 
+      <Navbar
+        onNavigate={navigateTo}
+        currentPage={currentPage}
+        theme={theme}
+        onToggleTheme={toggleTheme}
       />
-      
+
       <div className="flex flex-col gap-0">
         {currentPage === 'home' ? (
           <>
@@ -65,11 +74,13 @@ export default function App() {
             <Experience />
             <Contact />
           </>
+        ) : currentPage === 'case-study' && selectedProject ? (
+          <CaseStudy project={selectedProject} onBack={() => setCurrentPage('projects')} />
         ) : (
           <div className="pt-24 min-h-screen bg-stone-50 dark:bg-stone-950 transition-colors duration-300">
             <AnimatePresence mode="wait">
               {currentPage === 'skills' && <Skills key="skills" />}
-              {currentPage === 'projects' && <Projects key="projects" />}
+              {currentPage === 'projects' && <Projects key="projects" onOpenCaseStudy={handleOpenCaseStudy} />}
             </AnimatePresence>
           </div>
         )}

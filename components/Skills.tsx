@@ -74,8 +74,8 @@ const Skills: React.FC = () => {
         <motion.div
            {...({
              initial: { opacity: 0, y: 20 },
-             whileInView: { opacity: 1, y: 0 },
-             viewport: { once: true }
+             animate: { opacity: 1, y: 0 },
+             transition: { duration: 0.5 }
            } as any)}
            className="mb-16 text-center"
         >
@@ -97,8 +97,7 @@ const Skills: React.FC = () => {
               {...({
                 custom: catIndex,
                 initial: "hidden",
-                whileInView: "visible",
-                viewport: { once: true },
+                animate: "visible",
                 variants: {
                   hidden: { opacity: 0, y: 20 },
                   visible: (i: number) => ({
