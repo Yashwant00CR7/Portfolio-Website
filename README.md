@@ -4,7 +4,7 @@
 
 A high-performance, interactive portfolio website for **Yashwant K**, an AI Engineer specializing in Agentic AI and Computer Vision.
 
-**[Live Demo →](https://portfolio-website-steel-zeta-99.vercel.app/)**
+**[Live Demo →](https://yashwantk.vercel.app/)**
 
 ---
 
