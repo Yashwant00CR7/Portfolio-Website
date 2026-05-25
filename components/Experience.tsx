@@ -7,7 +7,14 @@ const hackathons = [
     year: "2025",
     title: "Google Tunix Hackathon",
     role: "Participant",
-    description: "Enhanced LLM transparency using Google's JAX-native library. Engineered a Reinforcement Learning pipeline (GRPO) on Cloud TPUs to generate explicit reasoning traces for Gemma models.",
+    description: "Engineered a Reinforcement Learning pipeline (GRPO) on Cloud TPUs to generate explicit reasoning traces for Gemma models using Google's JAX-native library.",
+    link: ""
+  },
+  {
+    year: "2025",
+    title: "CalHacks 12.0 (UC Berkeley)",
+    role: "Finalist",
+    description: "Built an AI system to solve real-world challenges at one of the world's largest collegiate hackathons hosted at UC Berkeley.",
     link: ""
   },
   {
@@ -16,6 +23,13 @@ const hackathons = [
     role: "Finalist",
     description: "Collaborated on an AI-Driven Unified Data Platform for Oceanographic insights to assist fishermen and protect coral reefs.",
     link: "https://youtu.be/zWe9s7wuJYQ"
+  },
+  {
+    year: "2025",
+    title: "KPR National Hackathon",
+    role: "Finalist",
+    description: "Developed and presented a functional AI prototype within a 24-hour sprint, competing against 50+ inter-state teams.",
+    link: ""
   },
   {
     year: "2025",
@@ -42,6 +56,9 @@ const education = [
 ];
 
 const certifications = [
+  "Building Agentic RAG with LlamaIndex - DeepLearning.AI (May 2026)",
+  "LangGraph Fundamentals - LangChain (May 2026)",
+  "Multi AI Agent Systems - DeepLearning.AI (Apr 2026)",
   "Computer Vision using Azure - Coursera (Sep 2025)",
   "HashGraph Developer Course - Hedera (Nov 2024)",
   "Intro to Machine Learning (Sep 2024)",
