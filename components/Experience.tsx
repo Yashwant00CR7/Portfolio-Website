@@ -12,13 +12,6 @@ const hackathons = [
   },
   {
     year: "2025",
-    title: "CalHacks 12.0 (UC Berkeley)",
-    role: "Finalist",
-    description: "Built an AI system to solve real-world challenges at one of the world's largest collegiate hackathons hosted at UC Berkeley.",
-    link: ""
-  },
-  {
-    year: "2025",
     title: "SIH (Smart India Hackathon)",
     role: "Finalist",
     description: "Collaborated on an AI-Driven Unified Data Platform for Oceanographic insights to assist fishermen and protect coral reefs.",

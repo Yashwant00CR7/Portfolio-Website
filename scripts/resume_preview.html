@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume Preview - Yashwant K</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #f5f5f4; padding: 40px; display: flex; justify-content: center; }
+  .resume { max-width: 850px; width: 100%; background: white; padding: 50px 55px; box-shadow: 0 10px 40px rgba(0,0,0,0.1); border-radius: 12px; }
+  h1 { font-size: 26px; font-weight: 700; color: #1c1917; letter-spacing: -0.5px; margin-bottom: 4px; }
+  .contact { font-size: 12px; color: #78716c; margin-bottom: 20px; line-height: 1.6; }
+  .divider { height: 2px; background: #292524; margin: 16px 0; }
+  h2 { font-size: 13px; font-weight: 700; color: #292524; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; margin-top: 20px; }
+  h2 .bar { display: inline-block; width: 24px; height: 2px; background: #292524; margin-right: 10px; vertical-align: middle; }
+  .summary { font-size: 12.5px; color: #44403c; line-height: 1.6; margin-bottom: 4px; }
+  .skills-cat { font-size: 12px; color: #44403c; margin-bottom: 2px; line-height: 1.65; }
+  .skills-cat strong { color: #1c1917; font-weight: 600; }
+  .project { margin-bottom: 16px; }
+  .project-title { font-size: 13px; font-weight: 700; color: #1e40af; margin-bottom: 3px; }
+  .project-line { font-size: 11.5px; color: #44403c; line-height: 1.55; margin-bottom: 1px; padding-left: 10px; border-left: 2px solid #e5e7eb; }
+  .project-line strong { color: #1c1917; }
+  .project-stack { font-size: 11px; color: #78716c; font-style: italic; padding-left: 10px; margin-top: 2px; }
+  .achievement { font-size: 11.5px; color: #44403c; margin-bottom: 2px; padding-left: 12px; position: relative; }
+  .achievement::before { content: ""; position: absolute; left: 0; top: 7px; width: 4px; height: 4px; background: #78716c; border-radius: 50%; }
+  .ed-row { font-size: 12px; color: #44403c; margin-bottom: 4px; line-height: 1.5; }
+  .ed-row strong { color: #1c1917; }
+  .certs { font-size: 11.5px; color: #44403c; line-height: 1.7; }
+  .tag { display: inline-block; background: #f5f5f4; color: #57534e; font-size: 10px; padding: 2px 8px; border-radius: 4px; margin: 1px 2px; border: 1px solid #e7e5e4; }
+  .header-row { display: flex; justify-content: space-between; align-items: flex-start; }
+  .header-row .right { text-align: right; font-size: 11px; color: #78716c; line-height: 1.5; }
+  .label { font-size: 9px; text-transform: uppercase; letter-spacing: 0.5px; color: #a8a29e; font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="resume">
+  <div class="header-row">
+    <div>
+      <h1>Yashwant K</h1>
+      <div class="contact">yashwantk0305@gmail.com &nbsp;·&nbsp; +91 93428 77060 &nbsp;·&nbsp; github.com/Yashwant00CR7 &nbsp;·&nbsp; linkedin.com/in/yashwant-k-935aa0292</div>
+    </div>
+    <div class="right">
+      <div>portfolio-website-steel-zeta-99.vercel.app</div>
+      <div>leetcode.com/u/Yashwant_K</div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <h2><span class="bar"></span>Summary</h2>
+  <div class="summary">AI/ML Engineer specializing in Agentic AI, MCP servers, multi-agent orchestration, and privacy-first mobile apps. Architecting production-grade RAG pipelines, serverless agentic workflows, and deployed MCP servers. Finalist at CalHacks 12.0 (UC Berkeley), SIH, and KPR National Hackathon.</div>
+
+  <h2><span class="bar"></span>Education</h2>
+  <div class="ed-row"><strong>Sri Shakthi Institute of Engineering and Technology</strong> — B.E. CSE (AI/ML) — 2023-2027 — CGPA: 8.11</div>
+  <div class="ed-row"><strong>Amrita Vidyalayam, Nallampalayam</strong> — Higher Secondary (CBSE) — 2022-2023 — 84.3%</div>
+  <div class="ed-row"><strong>Amrita Vidyalayam, Nallampalayam</strong> — Primary Education (CBSE) — 2020-2021 — 92.1%</div>
+
+  <h2><span class="bar"></span>Technical Skills</h2>
+  <div class="skills-cat"><strong>Agentic AI & MCP:</strong> LangGraph, LangChain, Multi-Agent Swarms, MCP Servers, Google ADK, DSPy, GraphRAG</div>
+  <div class="skills-cat"><strong>AI/ML:</strong> PyTorch, LoRA Fine-Tuning, HuggingFace Transformers, YOLO, Sentence Embeddings</div>
+  <div class="skills-cat"><strong>Backend & APIs:</strong> Python (AsyncIO), FastAPI, SSE Streaming, REST APIs, Flask</div>
+  <div class="skills-cat"><strong>Data & Storage:</strong> Pinecone, SQLite VSS, MongoDB, PostgreSQL, Pandas, NumPy</div>
+  <div class="skills-cat"><strong>Infrastructure:</strong> Docker, GCP, Vercel, HF Spaces, GitHub Actions</div>
+  <div class="skills-cat"><strong>Mobile:</strong> Flutter (Dart), Kotlin, Android SDK, SMS/Telephony APIs</div>
+
+  <h2><span class="bar"></span>Projects</h2>
+
+  <div class="project">
+    <div class="project-title">ArchMind — AI-Powered Architecture MCP Server</div>
+    <div class="project-line"><strong>Problem:</strong> Cloud architecture diagrams take hours to create manually and become outdated as code evolves.</div>
+    <div class="project-line"><strong>Solution:</strong> MCP server using Gemini 3 Flash + Mermaid.js. Recursive Git tree scanning extracts full repo context. Organizes into tiered subgraphs (Frontend > API > Logic > Data > External).</div>
+    <div class="project-line"><strong>Impact:</strong> Reduces diagram creation from hours to seconds. Accessible to any AI agent via MCP protocol.</div>
+    <div class="project-stack">React | Gemini API | Mermaid.js | MCP Protocol | TypeScript | Vercel <span class="tag">GitHub: Yashwant00CR7/Archy</span></div>
+  </div>
+
+  <div class="project">
+    <div class="project-title">Claude Code Proxy — Free NVIDIA NIM Proxy</div>
+    <div class="project-line"><strong>Problem:</strong> Claude Code requires $100+/month API access.</div>
+    <div class="project-line"><strong>Solution:</strong> FastAPI proxy routing Anthropic API calls to 8 free NVIDIA NIM models with auto-failover and SSE streaming.</div>
+    <div class="project-line"><strong>Impact:</strong> Full Claude Code functionality at zero API cost. Graceful rate-limit handling and Whisper transcription.</div>
+    <div class="project-stack">FastAPI | Python | NVIDIA NIM | Docker | HF Spaces | AsyncIO <span class="tag">Live: hf.co/spaces/Yash030/claude-code-proxy</span></div>
+  </div>
+
+  <div class="project">
+    <div class="project-title">Sleep Protection — Privacy-First Android DND App</div>
+    <div class="project-line"><strong>Problem:</strong> Android DND mutes all audio, doesn't inform callers, and has no trusted emergency bypass.</div>
+    <div class="project-line"><strong>Solution:</strong> Flutter + Kotlin app. Isolates STREAM_RING only. SMS auto-reply with EMERGENCY override (1h window, 2-min ringer restoration).</div>
+    <div class="project-line"><strong>Impact:</strong> Zero network permissions. No servers, no cloud, no tracking. Works on all Android 5.0+.</div>
+    <div class="project-stack">Flutter | Dart | Kotlin | Android SDK | SMS/Telephony APIs <span class="tag">GitHub: Yashwant00CR7/Sleeping-Protection</span></div>
+  </div>
+
+  <div class="project">
+    <div class="project-title">Package Conflict Resolver — Multi-Agent ADK System</div>
+    <div class="project-line"><strong>Problem:</strong> Python dependency conflicts require cross-referencing PyPI, GitHub issues — tedious and error-prone.</div>
+    <div class="project-line"><strong>Solution:</strong> Three-agent swarm (Triage, Researcher, CodeSurgeon) using Crawl4AI + Google ADK. PyPI API validation prevents hallucinated versions.</div>
+    <div class="project-line"><strong>Impact:</strong> 45% reduction in debugging time, 95% resolution rate, traced via LangSmith.</div>
+    <div class="project-stack">Python | Google ADK | LangSmith | Crawl4AI | Pinecone | Gemini | FastAPI</div>
+  </div>
+
+  <div class="project">
+    <div class="project-title">Calendar AI — Serverless Agentic Scheduler</div>
+    <div class="project-line"><strong>Problem:</strong> Edge devices lack orchestration depth for secure personal assistant tasks.</div>
+    <div class="project-line"><strong>Solution:</strong> Privacy-first Flutter + Gemini 2.5 Flash scheduler with hybrid intent routing for zero-egress execution.</div>
+    <div class="project-stack">Dart | Flutter | Google Cloud APIs | Gemini 2.5 Flash | SQLite VSS</div>
+  </div>
+
+  <h2><span class="bar"></span>Achievements & Hackathons</h2>
+  <div class="achievement"><strong>CalHacks 12.0 Finalist (UC Berkeley)</strong> — Competed at one of the world's largest collegiate hackathons</div>
+  <div class="achievement"><strong>Tech Fest Lead</strong> — Managed 'Kalam' for 500+ attendees, 30 cross-functional sub-teams</div>
+  <div class="achievement"><strong>KPR National Hackathon</strong> — Developed AI prototype in 24-hour sprint, 50+ inter-state teams</div>
+  <div class="achievement"><strong>SIH Finalist</strong> — Top 5 out of 15 departmental teams in internal selection</div>
+  <div class="achievement"><strong>Google Tunix Hackathon</strong> — GRPO RL pipeline on Cloud TPUs for Gemma reasoning traces</div>
+
+  <h2><span class="bar"></span>Certifications</h2>
+  <div class="certs">
+    Building Agentic RAG with LlamaIndex - DeepLearning.AI (2026)<br>
+    LangGraph Fundamentals - LangChain (2026)<br>
+    Multi AI Agent Systems - DeepLearning.AI (2026)<br>
+    Computer Vision using Azure - Coursera (2025)<br>
+    HashGraph Developer Course - Hedera (2024)<br>
+    Intro to Machine Learning (2024)<br>
+    Intro to Deep Learning - Coursera (2024)
+  </div>
+</div>
+</body>
+</html>

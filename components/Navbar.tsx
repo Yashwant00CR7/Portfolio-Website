@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Github, Linkedin, Mail, Sun, Moon } from 'lucide-react';
+import { Menu, X, Github, Linkedin, Mail, Sun, Moon, User, Code2, Briefcase, Map, Send } from 'lucide-react';
 
 interface NavbarProps {
   onNavigate: (page: string, section?: string) => void;
@@ -38,12 +38,12 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage, theme, onToggl
     setIsOpen(false);
   };
 
-  const navLinks = [
-    { name: 'About', action: () => handleNavClick('home', 'about') },
-    { name: 'Skills', action: () => handleNavClick('skills') },
-    { name: 'Projects', action: () => handleNavClick('projects') },
-    { name: 'Journey', action: () => handleNavClick('home', 'experience') },
-    { name: 'Contact', action: () => handleNavClick('home', 'contact') },
+const navLinks = [
+    { name: 'About', icon: <User size={14} />, action: () => handleNavClick('home', 'about') },
+    { name: 'Skills', icon: <Code2 size={14} />, action: () => handleNavClick('skills') },
+    { name: 'Projects', icon: <Briefcase size={14} />, action: () => handleNavClick('projects') },
+    { name: 'Journey', icon: <Map size={14} />, action: () => handleNavClick('home', 'experience') },
+    { name: 'Contact', icon: <Send size={14} />, action: () => handleNavClick('home', 'contact') },
   ];
 
   // Only show background if scrolled or not home, AND menu is NOT open.
@@ -73,18 +73,20 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage, theme, onToggl
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => {
-              const isActive = (currentPage === 'home' && link.name === 'About' && false) || // Logic placeholder
+{navLinks.map((link) => {
+              const isActive = (currentPage === 'home' && link.name === 'About' && false) ||
                 (currentPage === 'skills' && link.name === 'Skills') ||
-                (currentPage === 'projects' && link.name === 'Projects');
+                (currentPage === 'projects' && link.name === 'Projects') ||
+                (currentPage === 'home' && link.name === 'Journey' && false);
 
               return (
                 <button
                   key={link.name}
                   onClick={link.action}
-                  className={`text-sm font-medium transition-colors relative group cursor-scale ${isActive ? 'text-stone-900 dark:text-stone-100' : 'text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100'
+                  className={`text-sm font-medium transition-colors relative group cursor-scale flex items-center gap-1.5 ${isActive ? 'text-stone-900 dark:text-stone-100' : 'text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-100'
                     }`}
                 >
+                  <span className="opacity-60 group-hover:opacity-100 transition-opacity">{link.icon}</span>
                   {link.name}
                   <span className={`absolute -bottom-1 left-0 h-0.5 bg-gradient-to-r from-purple-500 to-cyan-500 transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'
                     }`} />
@@ -141,12 +143,13 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate, currentPage, theme, onToggl
               className="fixed inset-0 bg-stone-50 dark:bg-stone-950 z-40 flex flex-col items-center justify-center md:hidden"
             >
               <div className="flex flex-col items-center gap-8 text-xl font-serif text-stone-900 dark:text-stone-100">
-                {navLinks.map((link) => (
+{navLinks.map((link) => (
                   <button
                     key={link.name}
                     onClick={link.action}
-                    className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
+                    className="hover:text-purple-600 dark:hover:text-purple-400 transition-colors flex items-center gap-2"
                   >
+                    <span className="opacity-60">{link.icon}</span>
                     {link.name}
                   </button>
                 ))}
