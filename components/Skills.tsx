@@ -5,27 +5,27 @@ const skillCategories = [
   {
     title: "Generative AI & Agents",
     color: "purple",
-    skills: ["Multi-Agent Systems", "Google ADK", "LangChain", "RAG", "Gemini APIs"]
+    skills: ["LangGraph", "LangChain", "Multi-Agent Systems", "MCP", "Google ADK", "RAG", "Gemini APIs", "DSPy"]
   },
   {
-    title: "Machine Learning",
+    title: "Machine Learning & Deep Learning",
     color: "indigo",
-    skills: ["Scikit-learn", "YOLO (Computer Vision)", "NLP", "Pandas", "NumPy"]
+    skills: ["PyTorch", "LoRA Fine-Tuning", "HuggingFace Transformers", "YOLO (Computer Vision)", "Scikit-learn", "NLP", "Pandas/NumPy"]
   },
   {
-    title: "Programming & Web",
+    title: "Backend & APIs",
     color: "cyan",
-    skills: ["Python", "Flutter (Dart)", "AsyncIO", "Streamlit", "Flask"]
+    skills: ["Python", "FastAPI", "AsyncIO", "Flask", "REST API Design", "WebSockets", "SSE Streaming"]
   },
   {
-    title: "Databases",
-    color: "emerald",
-    skills: ["Pinecone (Vector DB)", "MongoDB", "SQLite", "Firebase"]
-  },
-  {
-    title: "Tools & Cloud",
+    title: "Infrastructure & DevOps",
     color: "orange",
-    skills: ["Google Cloud Platform", "Crawl4AI", "Git/GitHub", "System Design"]
+    skills: ["Docker", "Google Cloud Platform", "Vercel", "HF Spaces", "GitHub Actions (CI/CD)", "System Design"]
+  },
+  {
+    title: "Data & Vector Stores",
+    color: "emerald",
+    skills: ["Pinecone (Vector DB)", "SQLite VSS", "MongoDB", "PostgreSQL", "Firebase", "Redis"]
   }
 ];
 

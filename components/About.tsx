@@ -101,7 +101,7 @@ const About: React.FC = () => {
                 <Zap size={12} /> Core Stack
               </h3>
               <div className="flex flex-wrap gap-2">
-                {['Python', 'PyTorch', 'TensorFlow', 'React', 'FastAPI', 'Docker', 'Google ADK'].map((tag) => (
+                {['Python', 'PyTorch', 'LangGraph', 'FastAPI', 'Docker', 'GCP', 'MCP'].map((tag) => (
                   <span key={tag} className="px-3 py-1 bg-white dark:bg-stone-800 rounded-lg text-xs font-semibold text-stone-600 dark:text-stone-300 border border-stone-200 dark:border-stone-700 hover:border-purple-300 dark:hover:border-purple-700 hover:text-purple-600 dark:hover:text-purple-400 transition-colors cursor-default">
                     {tag}
                   </span>
