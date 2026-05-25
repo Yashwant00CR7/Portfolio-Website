@@ -35,9 +35,9 @@ const About: React.FC = () => {
                   transition: { type: "spring", stiffness: 200, damping: 20 },
                   whileHover: { y: -5, scale: 1.05 }
                 } as any)}
-              >
+>
                 <img
-                  src="https://avatars.githubusercontent.com/u/146008508?v=4"
+                  src="/profile.png"
                   alt="Yashwant K"
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />

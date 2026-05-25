@@ -70,25 +70,34 @@ export const projects: Project[] = [
         }
     },
     {
-        title: "Phone Control MCP",
-        description: "Android automation agent via MCP \u2014 controls a physical Android device through AI using AccessibilityService, UI tree parsing, and wireless ADB.",
-        longDescription: "A robust, remotely controllable Android automation agent using the Model Context Protocol (MCP). This project allows an AI agent (Claude, Gemini, etc.) to interact with a physical or emulated Android device through a local HTTP server and the Android Accessibility API. Features semantic UI element search, screenshot-based verification, wireless pairing, and real-time device health monitoring. The Android app is a Kotlin-based AccessibilityService running a NanoHTTPD server.",
+        title: "Sleep Protection",
+        description: "Privacy-first Android app that silences calls and SMS during sleep hours with EMERGENCY bypass for whitelisted contacts. Flutter + native Kotlin, zero network access.",
+        longDescription: "Sleep Protection is a privacy-first, offline-only Android app built with Flutter and native Kotlin that intelligently silences calls and messages during sleep hours. Unlike standard DND, it preserves audio streams (music, white noise) while silencing ringtone, provides automatic SMS replies to let callers know you're sleeping, and includes a strict EMERGENCY override system: whitelisted contacts receive an auto-reply with instructions, and if they reply 'EMERGENCY' within one hour, the ringer is restored for two minutes. No servers, no cloud APIs, no network access, and zero data tracking. Built from the ground up using native Android telephony APIs for maximum compatibility across devices from Android 5.0 onward.",
         features: [
-            "UI Element Interaction via Semantic Node IDs",
-            "Semantic Search by Visible Text",
-            "Visual Verification via Screenshot Chaining",
-            "Wireless ADB Support for Remote Control",
-            "Device Health Monitoring (Battery, Activity, System Info)"
+            "Audio Stream Isolation — silences only ringtone, leaves music/white noise untouched",
+            "SMS Auto-Reply + Strict EMERGENCY Bypass (reply 'EMERGENCY' within 1h)",
+            "Broad Android Compatibility — no Pixel-only dependencies, works 5.0+",
+            "Quick Settings Tile — zero-touch toggle from notification shade",
+            "Boot Persistence — auto-restarts protection after device reboot"
         ],
-        tags: ["Python", "MCP", "Kotlin", "Android", "AccessibilityService", "NanoHTTPD", "Wireless ADB"],
-        // IMAGE_PLACEHOLDER — replace with /projects/phone-control-mcp/cover.png
-        image: "/projects/auto-retail2.png",
+        tags: ["Flutter", "Dart", "Kotlin", "Android", "DND", "SMS Telephony", "Privacy-First"],
+        // IMAGE_PLACEHOLDER — replace with /projects/sleep-protection/cover.png
+        image: "/projects/package_doctor1.jpg",
         gallery: [
-            "/projects/auto-retail2.png"
+            "/projects/package_doctor1.jpg"
         ],
         links: {
             demo: "#",
-            repo: "https://github.com/Yashwant00CR7"
+            repo: "https://github.com/Yashwant00CR7/Sleeping-Protection"
+        },
+        caseStudy: {
+            role: "Android Engineer & Architect",
+            timeline: "May 2026",
+            problem: "Standard Android Do Not Disturb (DND) has four critical flaws: (1) it mutes all audio including music and white noise that help people sleep, (2) callers have no way to know you're sleeping or how to reach you in an emergency, (3) CallScreeningService works reliably only on Google Pixel devices, and (4) anyone can bypass DND by calling repeatedly — there's no filter for trusted emergency contacts.",
+            solution: "I built a hybrid Flutter + native Kotlin architecture that separates audio streams (silences STREAM_RING only, leaves STREAM_MUSIC untouched) using INTERRUPTION_FILTER_PRIORITY. For emergency bypass, the system uses a two-stage verification: (1) whitelisted contacts receive an auto-reply SMS with instructions, (2) if they reply 'EMERGENCY' within 1 hour of the auto-reply, the ringer is restored for exactly 2 minutes. Non-whitelisted SMS are silently ignored with no auto-reply, preventing spam leakage. The entire app has zero network permissions — no servers, no cloud, no tracking.",
+            process: "The architecture uses MethodChannel to bridge Flutter UI with native Kotlin services. On the native side, SleepDndService runs as a foreground START_STICKY service that survives memory pressure, SMSInterceptorReceiver uses a high-priority broadcast receiver (priority = 2147483647) to intercept incoming SMS before any other app, and SleepProtectionTileService provides a native Quick Settings toggle. Settings are stored as JSON in SharedPreferences (avoiding brittle pipe-delimiter parsing for phone numbers). The BootCompletedReceiver auto-restarts protection after reboot. On the Flutter side, the app provides toggle, schedule config, whitelist management, and interaction logging through clean Material Design screens.",
+            challenges: "The biggest challenge was the SMS interception timing — Android's SMS dispatch order varies by manufacturer. I solved this by using the highest possible receiver priority and implementing a cooldown mechanism (same number within 5 minutes = no duplicate auto-reply). Another challenge was the 1-hour EMERGENCY window management: the system stores auto-reply timestamps and purges stale entries on each new SMS, preventing the bypass window from accumulating across days.",
+            learnings: "This project reinforced that offline-first, privacy-preserving Android development is entirely possible with native APIs — no cloud dependency required. The rule-based engine approach (not AI) proved simpler, faster, and more reliable than the original multi-agent AI design. For real-world sleep protection, deterministic rules outperform LLM reasoning on latency, reliability, and privacy."
         }
     },
     {
