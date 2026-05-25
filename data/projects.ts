@@ -57,7 +57,7 @@ export const projects: Project[] = [
         ],
         links: {
             demo: "https://youtu.be/Hpi4CEw1DBs",
-            repo: "https://github.com/Yashwant00CR7"
+            repo: "https://github.com/Yashwant00CR7/Archy"
         },
         caseStudy: {
             role: "AI Engineer & Architect",
